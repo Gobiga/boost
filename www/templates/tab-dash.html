@@ -25,9 +25,12 @@
   <ul class="songs">
           <li ng-repeat="song in songs ">
             <span>{{song.snippet.title}}</span>
-            <span>{{song.id}}</span>
+             <button class="button button-clear" ng-click="addToSongList()" >
+            <i class="icon ion-plus"></i>
+          </button>
           </li>
-        </ul>  
+           
+  </ul>  
 
   </ion-content>
 </ion-view>
