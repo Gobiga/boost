@@ -1,6 +1,33 @@
 <ion-view view-title="Select Your Songs">
   <ion-content class="padding">
-    <input type="search" ng-model="searchSong" placeholder="Type in the name..">
+ 
+    <div class="bar bar-header item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Type in the name.." ng-model="searchSong" ng-change="search(searchSong)" >
+          </label>
+          <button class="button button-clear" ng-click="addToSongList()" >
+            <i class="icon ion-plus"></i>
+          </button>
+        </div>
+
+   <!--  <ui-select ng-model="song.selected" >
+    <ui-select-match placeholder="Select a song from the list ">{{$select.selected.name}}</ui-select-match>
+    <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
+      <div ng-bind-html="person.name | highlight: $select.search"></div>
+      <small>
+        email: {{person.email}}
+        age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
+      </small>
+    </ui-select-choices>
+  </ui-select> -->
+
+  <ul class="songs">
+          <li ng-repeat="song in songs ">
+            <span>{{song.snippet.title}}</span>
+            <span>{{song.id}}</span>
+          </li>
+        </ul>  
 
   </ion-content>
 </ion-view>

@@ -1,7 +1,23 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope,$http) {
 
+  $scope.search = function( query ){
+      console.log("searching: "+ query);
+      $http.get('https://www.googleapis.com/youtube/v3/search', {
+        params: {
+          key: 'AIzaSyDdzsORfH9HlzGxz65xkLuo6IFKfT-NcLQ',
+          type: 'video',
+          maxResults: '10',
+          // pageToken: isNewQuery ? '' : $scope.nextPageToken,
+          part: 'id,snippet',
+          fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle,nextPageToken',
+          q: query
+      }}).then(function(response){
+        console.log(response.data.items);
+         $scope.songs = response.data.items
+      });
+    };
 
 })
 
